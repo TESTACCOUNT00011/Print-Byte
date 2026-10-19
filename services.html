@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Student-friendly printing and computer rental prices with a live estimator.">
+<meta name="theme-color" content="#13272c">
+<title>Services &amp; Prices | Byte &amp; Print</title>
+<link rel="icon" type="image/svg+xml" href="assets/mark.svg">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html"><img src="assets/mark.svg" alt="" width="26" height="26"> Byte &amp; Print</a>
+  <nav aria-label="Main">
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="shop.html">Shop</a>
+    <a href="pickup.html">Pickup</a>
+  </nav>
+</header>
+<main>
+  <section class="page-head">
+    <h1>Services &amp; Prices</h1>
+    <p>Student-friendly rates for printing, scanning and computer rental.</p>
+  </section>
+  <table class="price-table">
+    <thead><tr><th>Service</th><th>Rate</th></tr></thead>
+    <tbody>
+      <tr><td>Black &amp; white printing</td><td>₱2.50 / page</td></tr>
+      <tr><td>Color printing</td><td>₱8.50 / page</td></tr>
+      <tr><td>Photocopy</td><td>₱2.50 / page</td></tr>
+      <tr><td>Scanning</td><td>₱10.00 / session</td></tr>
+      <tr><td>Computer rental</td><td>₱20.00 / hour</td></tr>
+    </tbody>
+  </table>
+  <section class="panel" aria-label="Cost estimator">
+    <h2>Live estimate</h2>
+    <div class="field">
+      <label for="service-type">Service</label>
+      <select id="service-type">
+        <option value="bw">Black &amp; white printing</option>
+        <option value="color">Color printing</option>
+        <option value="copy">Photocopy</option>
+        <option value="scan">Scanning</option>
+        <option value="rental">Computer rental</option>
+      </select>
+    </div>
+    <div class="field">
+      <label id="quantity-label" for="service-quantity">Pages per copy</label>
+      <input id="service-quantity" type="number" min="1" value="1">
+    </div>
+    <div class="field" id="copies-field">
+      <label for="service-copies">Copies</label>
+      <input id="service-copies" type="number" min="1" value="1">
+    </div>
+    <div class="field check">
+      <label><input type="checkbox" id="service-pickup"> Add pickup handling (₱15)</label>
+    </div>
+    <p class="total-line">Estimated total: <strong id="service-total">—</strong></p>
+    <p class="hint" id="calculator-message">Estimate only — no charge or order was created.</p>
+  </section>
+</main>
+<footer class="site-footer">
+  <p>Byte &amp; Print — student business demo. No real orders or payments.</p>
+</footer>
+</body>
+</html>
