@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+:root{--ink:#142a2d;--paper:#fbfbf5;--muted:#5c6868;--line:#dbe4dc;--mint:#d1efd9;--lime:#d8f16d;--cream:#f3f3e9;--soft:#edf2e9;--radius:22px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.55}
+img{display:block;max-width:100%}
+h1,h2,h3{font-family:'Space Grotesk',sans-serif;line-height:1.15}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 20px;border-bottom:2px solid var(--line);background:var(--soft);position:sticky;top:0;z-index:10}
+.brand{display:flex;align-items:center;gap:8px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;text-decoration:none;color:var(--ink)}
+.topbar nav{display:flex;gap:6px;flex-wrap:wrap}
+.topbar nav a{text-decoration:none;color:var(--ink);font-weight:500;padding:7px 12px;border-radius:12px}
+.topbar nav a:hover{background:var(--mint)}
+main{max-width:1000px;margin:0 auto;padding:28px 20px 56px}
+.eyebrow{display:inline-block;background:var(--lime);color:var(--ink);font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:4px 12px;margin-bottom:14px}
+.hero{background:var(--mint);border:2px solid var(--line);border-radius:var(--radius);padding:44px 30px;margin-bottom:30px}
+.hero h1{font-size:2.1rem;margin-bottom:12px;max-width:22ch}
+.hero p{color:var(--muted);max-width:56ch}
+.page-head{margin-bottom:26px}
+.page-head h1{font-size:1.8rem;margin-bottom:8px}
+.page-head p{color:var(--muted);max-width:60ch}
+.card-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.card{background:#fff;border:2px solid var(--line);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;gap:10px}
+.card h3{font-size:1.1rem}
+.card p{color:var(--muted);font-size:.95rem;flex:1}
+.button{display:inline-block;background:var(--ink);color:var(--paper);font-weight:600;font-size:.95rem;text-decoration:none;border:none;border-radius:999px;padding:11px 20px;cursor:pointer;font-family:'DM Sans',sans-serif}
+.button:hover{background:#1d3b41}
+.button.light{background:var(--lime);color:var(--ink)}
+.button.light:hover{background:#c9e75c}
+.site-footer{border-top:2px solid var(--line);background:var(--soft);padding:22px 20px;text-align:center;color:var(--muted);font-size:.9rem}
