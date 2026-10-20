@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Browse demo school supplies and snacks with PyScript filtering and live basket totals.">
+<meta name="theme-color" content="#13272c">
+<title>School Supplies &amp; Snacks | Byte &amp; Print</title>
+<link rel="icon" type="image/svg+xml" href="assets/mark.svg">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html"><img src="assets/mark.svg" alt="" width="26" height="26"> Byte &amp; Print</a>
+  <nav aria-label="Main">
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="shop.html">Shop</a>
+    <a href="pickup.html">Pickup</a>
+  </nav>
+</header>
+<main>
+  <section class="page-head">
+    <h1>School Supplies &amp; Snacks</h1>
+    <p>Browse the demo catalog, filter by category and build a mini basket.</p>
+  </section>
+  <div class="toolbar">
+    <input id="product-search" class="search-input" type="text" placeholder="Search products…" aria-label="Search products">
+    <button class="filter-button active" data-filter="all" type="button">All</button>
+    <button class="filter-button" data-filter="supplies" type="button">Supplies</button>
+    <button class="filter-button" data-filter="snacks" type="button">Snacks</button>
+  </div>
+  <p class="count-line" id="shop-count">0 item(s) shown</p>
+  <div class="shop-layout">
+    <section aria-label="Products">
+      <div class="product-grid">
+        <article class="product-card" data-category="supplies" data-name="ballpen">
+          <span class="emoji">🖊️</span>
+          <h3>Ballpen</h3>
+          <p class="price">₱12.00</p>
+          <button class="button light add-item" type="button" data-name="Ballpen" data-price="12">Add to basket</button>
+        </article>
+        <article class="product-card" data-category="supplies" data-name="notebook">
+          <span class="emoji">📓</span>
+          <h3>Notebook</h3>
+          <p class="price">₱25.00</p>
+          <button class="button light add-item" type="button" data-name="Notebook" data-price="25">Add to basket</button>
+        </article>
+        <article class="product-card" data-category="supplies" data-name="bond paper">
+          <span class="emoji">📄</span>
+          <h3>Bond Paper</h3>
+          <p class="price">₱35.00</p>
+          <button class="button light add-item" type="button" data-name="Bond Paper" data-price="35">Add to basket</button>
+        </article>
+        <article class="product-card" data-category="snacks" data-name="biscuit">
+          <span class="emoji">🍪</span>
+          <h3>Biscuit</h3>
+          <p class="price">₱8.00</p>
+          <button class="button light add-item" type="button" data-name="Biscuit" data-price="8">Add to basket</button>
+        </article>
+        <article class="product-card" data-category="snacks" data-name="juice">
+          <span class="emoji">🧃</span>
+          <h3>Juice</h3>
+          <p class="price">₱15.00</p>
+          <button class="button light add-item" type="button" data-name="Juice" data-price="15">Add to basket</button>
+        </article>
+        <article class="product-card" data-category="snacks" data-name="crackers">
+          <span class="emoji">🥨</span>
+          <h3>Crackers</h3>
+          <p class="price">₱10.00</p>
+          <button class="button light add-item" type="button" data-name="Crackers" data-price="10">Add to basket</button>
+        </article>
+      </div>
+      <div class="empty-state" id="shop-empty" hidden>No products match your search.</div>
+    </section>
+    <aside class="basket" aria-label="Basket">
+      <h2>🧺 Basket</h2>
+      <div id="basket-items">No items yet</div>
+      <p class="basket-total-line"><span>Total</span> <span id="basket-total">₱0.00</span></p>
+    </aside>
+  </div>
+</main>
+<footer class="site-footer">
+  <p>Byte &amp; Print — student business demo. No real orders or payments.</p>
+</footer>
+</body>
+</html>
