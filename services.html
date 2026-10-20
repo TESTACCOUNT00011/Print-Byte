@@ -8,6 +8,9 @@
 <title>Services &amp; Prices | Byte &amp; Print</title>
 <link rel="icon" type="image/svg+xml" href="assets/mark.svg">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://pyscript.net/releases/2026.7.3/core.css">
+<script type="module" src="https://pyscript.net/releases/2026.7.3/core.js"></script>
+<script type="py" src="./scripts/services.py"></script>
 </head>
 <body>
 <header class="topbar">
@@ -48,16 +51,17 @@
     </div>
     <div class="field">
       <label id="quantity-label" for="service-quantity">Pages per copy</label>
-      <input id="service-quantity" type="number" min="1" value="1">
+      <input id="service-quantity" type="number" min="1" max="500" value="1">
     </div>
     <div class="field" id="copies-field">
       <label for="service-copies">Copies</label>
-      <input id="service-copies" type="number" min="1" value="1">
+      <input id="service-copies" type="number" min="1" max="50" value="1">
     </div>
-    <div class="field check">
+    <div class="field check" id="pickup-fee-line">
       <label><input type="checkbox" id="service-pickup"> Add pickup handling (₱15)</label>
     </div>
     <p class="total-line">Estimated total: <strong id="service-total">—</strong></p>
+    <p class="hint" id="estimate-breakdown">Pick a service to see the breakdown.</p>
     <p class="hint" id="calculator-message">Estimate only — no charge or order was created.</p>
   </section>
 </main>
