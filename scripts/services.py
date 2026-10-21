@@ -6,6 +6,16 @@ RATES = {"bw": 2.50, "color": 8.50, "copy": 2.50, "scan": 10.00, "rental": 20.00
 def money(value):
     return f"₱{value:,.2f}"
 
+def valid_integer(selector, maximum):
+    """Return a bounded positive number; avoid negative or non-numeric estimates."""
+    try:
+        value = int(document.querySelector(selector).value)
+        if 1 <= value <= maximum:
+            return value
+    except (ValueError, TypeError):
+        pass
+    return None
+
 def update_quote():
     """INPUT/CHANGE EVENTS: recalculate price and update the DOM instantly."""
     service = document.querySelector("#service-type").value
@@ -13,15 +23,13 @@ def update_quote():
     document.querySelector("#quantity-label").textContent = "Hours" if rental else "Pages per copy"
     document.querySelector("#copies-field").hidden = rental
     document.querySelector("#pickup-fee-line").hidden = rental or service == "scan"
-    try:
-        qty = int(document.querySelector("#service-quantity").value)
-        copies = 1 if rental else int(document.querySelector("#service-copies").value)
-        if not 1 <= qty <= 500 or not 1 <= copies <= 50:
-            raise ValueError
-    except (ValueError, TypeError):
+    qty = valid_integer("#service-quantity", 500)
+    copies = 1 if rental else valid_integer("#service-copies", 50)
+    message = document.querySelector("#calculator-message")
+    if qty is None or copies is None:
         document.querySelector("#service-total").textContent = "—"
         document.querySelector("#estimate-breakdown").textContent = "Enter valid positive amounts."
-        document.querySelector("#calculator-message").textContent = "Pages/hours: 1–500. Copies: 1–50."
+        message.textContent = "Pages/hours: 1–500. Copies: 1–50."
         return
     fee = 15 if (not rental and service != "scan" and document.querySelector("#service-pickup").checked) else 0
     amount = qty * copies * RATES[service] + fee
@@ -29,7 +37,7 @@ def update_quote():
     detail = f"{qty} {unit} × {copies} × {money(RATES[service])}"
     document.querySelector("#service-total").textContent = money(amount)
     document.querySelector("#estimate-breakdown").textContent = detail + (" + ₱15 pickup" if fee else "")
-    document.querySelector("#calculator-message").textContent = "Estimate only — no charge or order was created."
+    message.textContent = "Estimate only — no charge or order was created."
 
 @when("input", "#service-quantity, #service-copies")
 @when("change", "#service-type, #service-pickup")
