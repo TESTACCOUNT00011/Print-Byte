@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Estimate and prepare a print pickup request without a database.">
+<meta name="theme-color" content="#13272c">
+<title>Pickup Printing | Byte &amp; Print</title>
+<link rel="icon" type="image/svg+xml" href="assets/mark.svg">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://pyscript.net/releases/2026.7.3/core.css">
+<script type="module" src="https://pyscript.net/releases/2026.7.3/core.js"></script>
+<script type="py" src="./scripts/pickup.py"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html"><img src="assets/mark.svg" alt="" width="26" height="26"> Byte &amp; Print</a>
+  <nav aria-label="Main">
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="shop.html">Shop</a>
+    <a href="pickup.html">Pickup</a>
+  </nav>
+</header>
+<main>
+  <section class="page-head">
+    <h1>Pickup Printing</h1>
+    <p>Estimate your print job and prepare a pickup request — no database, everything stays in your browser.</p>
+  </section>
+  <form id="pickup-form" class="panel" novalidate>
+    <h2>Request details</h2>
+    <div class="field">
+      <label for="customer-name">Customer name</label>
+      <input id="customer-name" type="text" required placeholder="Juan Dela Cruz">
+    </div>
+    <div class="field">
+      <label for="customer-email">Email</label>
+      <input id="customer-email" type="email" required placeholder="juan@example.com">
+    </div>
+    <div class="field">
+      <label for="pickup-type">Print type</label>
+      <select id="pickup-type">
+        <option value="bw">Black &amp; white (₱2.50/page)</option>
+        <option value="color">Color (₱8.50/page)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="pickup-paper">Paper size</label>
+      <select id="pickup-paper">
+        <option>A4</option>
+        <option>Letter</option>
+        <option>Long</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="pickup-pages">Pages per copy (1–500)</label>
+      <input id="pickup-pages" type="number" min="1" max="500" value="1" required>
+    </div>
+    <div class="field">
+      <label for="pickup-copies">Copies (1–50)</label>
+      <input id="pickup-copies" type="number" min="1" max="50" value="1" required>
+    </div>
+    <div class="field">
+      <label for="pickup-file">File to print (selected locally, never uploaded)</label>
+      <input id="pickup-file" type="file" accept=".pdf,.doc,.docx,.ppt,.pptx,.jpg,.png">
+      <p class="hint" id="file-feedback">No file selected</p>
+    </div>
+    <div class="field">
+      <label for="pickup-date">Preferred pickup date</label>
+      <input id="pickup-date" type="date" required>
+    </div>
+    <div class="field">
+      <label for="pickup-time">Preferred pickup time</label>
+      <input id="pickup-time" type="time" required>
+    </div>
+    <div class="field">
+      <label for="pickup-payment">Preferred payment</label>
+      <select id="pickup-payment">
+        <option>Cash at pickup</option>
+        <option>GCash</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="pickup-notes">Special instructions (optional)</label>
+      <textarea id="pickup-notes" rows="2" placeholder="e.g., staple pages, double-sided"></textarea>
+    </div>
+    <div class="panel" aria-label="Estimate">
+      <p>Printing subtotal: <strong id="pickup-subtotal">—</strong></p>
+      <p>Pickup handling fee: <strong>₱15.00</strong></p>
+      <p class="total-line">Estimated total: <strong id="pickup-total">—</strong></p>
+    </div>
+  </form>
+</main>
+<footer class="site-footer">
+  <p>Byte &amp; Print — student business demo. No real orders or payments.</p>
+</footer>
+</body>
+</html>
