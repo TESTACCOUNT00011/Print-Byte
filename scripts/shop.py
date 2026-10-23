@@ -4,6 +4,9 @@ from pyscript import document, when
 active_category = "all"
 basket = {}
 
+def money(value):
+    return f"₱{value:,.2f}"
+
 def update_visible_products():
     """INPUT/CLICK EVENTS: filter by category and case-insensitive search."""
     term = document.querySelector("#product-search").value.strip().lower()
@@ -34,20 +37,26 @@ def render_basket():
     panel = document.querySelector("#basket-items")
     panel.replaceChildren()
     total = 0
+    count = 0
     if not basket:
         panel.textContent = "No items yet"
     else:
         for name, item in basket.items():
+            count += item["quantity"]
             total += item["quantity"] * item["price"]
             row = document.createElement("div")
             label = document.createElement("span")
             label.textContent = f"{name} × {item['quantity']}"
             amount = document.createElement("strong")
-            amount.textContent = f"₱{item['quantity'] * item['price']:,.2f}"
+            amount.textContent = money(item["quantity"] * item["price"])
             row.appendChild(label)
             row.appendChild(amount)
             panel.appendChild(row)
-    document.querySelector("#basket-total").textContent = f"₱{total:,.2f}"
+    document.querySelector("#basket-total").textContent = money(total)
+    if count:
+        panel.setAttribute("aria-label", f"{count} items in basket")
+    else:
+        panel.setAttribute("aria-label", "Empty basket")
 
 @when("click", ".add-item")
 def add_to_basket(event):
@@ -57,6 +66,11 @@ def add_to_basket(event):
     if name not in basket:
         basket[name] = {"price": price, "quantity": 0}
     basket[name]["quantity"] += 1
+    render_basket()
+
+@when("click", "#clear-basket")
+def clear_basket(event):
+    basket.clear()
     render_basket()
 
 update_visible_products()
